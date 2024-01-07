@@ -93,23 +93,22 @@ function getPasswordOptions() {
   let charAmount = prompt("How many characters would you like the password to contain?");
   parseInt(charAmount);
   if(charAmount < 8 || charAmount > 128) {
-    alert("Please enter an amount between 8 and 128 characters.")
+    alert("Please enter an amount between 8 and 128 characters.");
     getPasswordOptions();
     return
   }
   return
 }
 getPasswordOptions();
-let lowerCase = confirm("Include lowercase letters in the password?")
-let upperCase = confirm("Include uppercase letters in the password?")
-let numeric = confirm("Inlcude numbers in the password?")
-let specialChar = confirm("Include special characters in the password?")
-getPasswordOptions
+let lowerCase = confirm("Include lowercase letters in the password?");
+let upperCase = confirm("Include uppercase letters in the password?");
+let numeric = confirm("Inlcude numbers in the password?");
+let specialChar = confirm("Include special characters in the password?");
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  let elementNum = arr[Math.floor(Math.random() * arr.length)];
+  return elementNum;
 }
-
 // Function to generate password with user input
 function generatePassword() {
 
