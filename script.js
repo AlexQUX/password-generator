@@ -89,12 +89,11 @@ var upperCasedCharacters = [
 ];
 
 // Initialises the charAmount variable outside of the function to allow for global use
-let charAmount = "";
+let charAmount = 0;
 // Function to prompt user for password options
 function getPasswordOptions() {
-  charAmount = prompt("How many characters would you like the password to contain?");
-  // Converts the variable from a string to an integer
-  charAmount = parseInt(charAmount);
+  // Rounds down if the user enters a floating point number
+  charAmount = Math.floor(prompt("How many characters would you like the password to contain?"));
   // Checks to ensure given number is within min/max limits, and whether no input has been given
   if(charAmount < 8 || charAmount > 128 || isNaN(charAmount)) {
     alert("Please enter an amount between 8 and 128 characters.");
