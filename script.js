@@ -103,17 +103,34 @@ function getPasswordOptions() {
   }
   return charAmount;
 }
+
+// Start of prompting user password structure options
 getPasswordOptions();
-let lowerCase = confirm("Include lowercase letters in the password?");
-let upperCase = confirm("Include uppercase letters in the password?");
-let numeric = confirm("Inlcude numbers in the password?");
-let specialChar = confirm("Include special characters in the password?");
+// Initialises the variable to undefined, so they can be used in a do, while loop
+let lowerCase, upperCase, numeric, specialChar;
+
+do {
+  lowerCase = confirm("Include lowercase letters in the password?");
+  upperCase = confirm("Include uppercase letters in the password?");
+  numeric = confirm("Include numbers in the password?");
+  specialChar = confirm("Include special characters in the password?");
+
+// Checks if the user has not selected at least one character type, and prompts them to do so
+  if (!lowerCase && !upperCase && !numeric && !specialChar) {
+    alert("Please select at least one type of character to include in the password");
+  }
+// Runs the loop as long as the user has not selected a character type
+} while (!lowerCase && !upperCase && !numeric && !specialChar)
+// End of prompting user password structure options
+
+
 // Function for getting a random element from an array
 function getRandom(arr) {
   // Selects a random element from the given array, using Math.floor to ensure that number is an integer
   let elementNum = arr[Math.floor(Math.random() * arr.length)];
   return elementNum;
 }
+
 // Function to generate password with user input
 function generatePassword() {
   // Creates a new array to store the password's characters
