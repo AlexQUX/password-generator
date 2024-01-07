@@ -88,16 +88,17 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+let charAmount = "";
 // Function to prompt user for password options
 function getPasswordOptions() {
-  let charAmount = prompt("How many characters would you like the password to contain?");
-  parseInt(charAmount);
+  charAmount = prompt("How many characters would you like the password to contain?");
+  charAmount = parseInt(charAmount);
   if(charAmount < 8 || charAmount > 128) {
     alert("Please enter an amount between 8 and 128 characters.");
     getPasswordOptions();
     return
   }
-  return
+  return charAmount;
 }
 getPasswordOptions();
 let lowerCase = confirm("Include lowercase letters in the password?");
@@ -111,7 +112,23 @@ function getRandom(arr) {
 }
 // Function to generate password with user input
 function generatePassword() {
-
+  // While the password is under charAmount
+  let password = "";
+  while(password.length < charAmount) {
+    if(lowerCase === true) {
+      password = password + getRandom(lowerCasedCharacters);
+    } 
+    if(upperCase === true) {
+      password = password + getRandom(upperCasedCharacters);
+    } 
+    if(numeric === true) {
+      password = password + getRandom(numericCharacters);
+    } 
+    if(specialChar === true) {
+      password = password + getRandom(specialCharacters);
+    } 
+  }
+  return password;
 }
 
 // Get references to the #generate element
