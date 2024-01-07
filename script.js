@@ -88,11 +88,14 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+// Initialises the charAmount variable outside of the function to allow for global use
 let charAmount = "";
 // Function to prompt user for password options
 function getPasswordOptions() {
   charAmount = prompt("How many characters would you like the password to contain?");
+  // Converts the variable from a string to an integer
   charAmount = parseInt(charAmount);
+  // Checks to ensure given number is within min/max limits
   if(charAmount < 8 || charAmount > 128) {
     alert("Please enter an amount between 8 and 128 characters.");
     getPasswordOptions();
@@ -107,19 +110,22 @@ let numeric = confirm("Inlcude numbers in the password?");
 let specialChar = confirm("Include special characters in the password?");
 // Function for getting a random element from an array
 function getRandom(arr) {
+  // Selects a random element from the given array, using Math.floor to ensure that number is an integer
   let elementNum = arr[Math.floor(Math.random() * arr.length)];
   return elementNum;
 }
 // Function to generate password with user input
 function generatePassword() {
-  // While the password is under charAmount
+  // Creates a new array to store the password's characters
   let output = [];
+  // Runs in a loop while the length of the array, stopping when the user-specified length has been reached
   while(output.length < charAmount) {
     if (lowerCase) output.push(getRandom(lowerCasedCharacters));
     if (upperCase) output.push(getRandom(upperCasedCharacters));
     if (numeric) output.push(getRandom(numericCharacters));
     if (specialChar) output.push(getRandom(specialCharacters));
   }
+  // Removes the commas, joining the characters together
   output = output.join('');
   return output;
 }
